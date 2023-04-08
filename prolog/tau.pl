@@ -11,6 +11,8 @@
 Γ ⊢ apply(dep_sum(x, f), args) ⇓ dep_sum(x, apply(f, args)).
 Γ ⊢ apply(prod(x, set, f), args) ⇓ prod(x, set, apply(f, args).
 Γ ⊢ apply(sum(x, set, f), args) ⇓ sum(x, set, apply(f, args).
+prod(x, [a], f) ⇓ t :- substitute(f, x, a, t).
+sum(x, [a], f) ⇓ t :- substitute(f, x, a, t).
 
 % Subtyping
 a <: a.
