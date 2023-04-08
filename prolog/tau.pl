@@ -5,9 +5,11 @@
 :- op(900, xfx, ⊣).
 
 % Evaluation
-Γ ⊢ ref(t, []) ⊣ Γ ⇓ v :- member((t, v), Γ).
-Γ1 ⊢ ref(product(x, f), [a | tail]) ⊣ Γ2 ⇓ v :- a <: x, [(x, a) | Γ1] ⊢ ref(f, tail) ⇓ v ⊣ Γ2.
-% Γ1 ⊢ ref(sum(x, f), [a | tail]) ⇓ v ⊣ Γ3 :- TODO.
+Γ ⊢ ref(t, args) ⇓ v :- member((t, a), Γ), apply(a, args).
+Γ ⊢ apply(t, []) ⇓ t.
+Γ ⊢ apply(dprod(x, f), [a | tail]) ⇓ v :- a <: x, [(x, a) | Γ] ⊢ apply(f, tail) ⇓ v.
+Γ ⊢ apply(dsum(x, f), args) ⇓ sum(x, apply(f, args)).
+Γ ⊢ apply(prod(x, set, f), args) ⇓ prod(x, set, apply(f, args).
 
 % Subtyping
 a <: a.
