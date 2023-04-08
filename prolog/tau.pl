@@ -7,7 +7,7 @@
 % Evaluation
 Γ ⊢ ref(t, []) ⊣ Γ ⇓ v :- member((t, v), Γ).
 Γ1 ⊢ ref(product(x, f), [a | tail]) ⊣ Γ2 ⇓ v :- a <: x, [(x, a) | Γ1] ⊢ ref(f, tail) ⇓ v ⊣ Γ2.
-% Γ1 ⊢ ref(sum(x, f), [a | tail]) ⇓ v ⊣ Γ3 :- TODO.
+% Γ1 ⊢ ref(sum(x, f), [a | tail]) ⇓ v ⊣ Γ3 :- Γ1 ⊢ a <: sum(x, f), ref(a, tail).
 
 % Subtyping
 a <: a.
