@@ -16,9 +16,9 @@ sum(x, [a], f) ⇓ t :- substitute(f, x, a, t).
 
 % Subtyping
 a <: a.
-t <: prod(_, [], _) ⊣ t.
-sum(x, [], f) <: _ ⊣ sum(x, [], f).
-prod(x, set1, f) <: prod(y, set2, g) ⊣ a :- optimal(set1, set2, a, b).
-prod(x, set,  f) <: a ⊣ b :- prod(x, set, f) <: prod(y, [a], y) ⊣ b.
-sum(x, set1, f) <: sum(y, set2, g) a ⊣ a :-  optimal(set1, set2, a, b).
-a <: sum(x, set, f) ⊣ sum(y, [b], y) <: sum(x, set, f).
+t <: prod(_, [], _).
+sum(x, [], f) <: _.
+prod(x, set1, f) <: prod(y, set2, g) :- unique_conversion(set1, set2).
+prod(x, set, f) <: a :- prod(x, set, f) <: prod(y, [a], y).
+sum(x, set1, f) <: sum(y, set2, g) :- unique_conversion(set1, set2).
+a <: sum(x, set, f) :- sum(y, [a], y) <: sum(x, set, f).
